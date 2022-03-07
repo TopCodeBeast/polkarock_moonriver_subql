@@ -1,0 +1,35 @@
+{
+  "name": "magick",
+  "version": "1.0.0",
+  "description": "None",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -b",
+    "prepack": "rm -rf dist && npm build",
+    "start:docker": "docker-compose pull && docker-compose up --remove-orphans",
+    "codegen": "./node_modules/.bin/subql codegen"
+  },
+  "homepage": "https://github.com/subquery/subql-starter",
+  "repository": "github:subquery/subql-starter",
+  "files": [
+    "dist",
+    "schema.graphql",
+    "project.yaml"
+  ],
+  "author": "vikiival",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "moonbeam-types-bundle": "^2.0.3",
+    "@polkadot/api": "^6.0.5",
+    "@subql/cli": "latest",
+    "@subql/types": "latest",
+    "typescript": "^4.5.5"
+  },
+  "exports": {
+    "chaintypes": "./src/chaintypes.ts"
+  }
+}
