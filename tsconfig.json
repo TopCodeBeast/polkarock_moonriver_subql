@@ -9,7 +9,9 @@
     "module": "commonjs",
     "outDir": "dist",
     "rootDir": "src",
-    "target": "es2017"
+    "target": "es2020",
+    "skipLibCheck": true,
+    "strictNullChecks": false
   },
   "include": [
     "src/**/*",

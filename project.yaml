@@ -1,52 +1,57 @@
-specVersion: 0.0.1
-description: None
-repository: ""
-schema: ./schema.graphql
+specVersion: 0.2.0
+name: metarock_moonriver
+version: 1.0.0
+description: Metarock Moonriver Subql
+repository: https://github.com/TopCodeBeast/polkarock_moonriver_subql.git
+schema:
+  file: ./schema.graphql
 network:
+  genesisHash: '0x401a1f9dca3da46f5c4091016c8a2f26dcea05865116b286f60f668207d1474b'
   endpoint: wss://moonriver.api.onfinality.io/public-ws
   chaintypes:
     file: './dist/chaintypes.js'
-definitions:
-  mapping: &mymapping
-    handlers:
-      - handler: handleCall
-        kind: substrate/CallHandler
-        filter:
-          module: utility
-          method: batchAll
-          success: true
-      - handler: handleCall
-        kind: substrate/CallHandler
-        filter:
-          module: utility
-          method: batch
-          success: true
-      - handler: handleCall
-        kind: substrate/CallHandler
-        filter:
-          module: system
-          method: remark
-          success: true
-      - handler: handleRemark
-        kind: substrate/CallHandler
-        filter:
-          module: utility
-          method: batchAll
-          success: true
-      - handler: handleRemark
-        kind: substrate/CallHandler
-        filter:
-          module: utility
-          method: batch
-          success: true
-      - handler: handleRemark
-        kind: substrate/CallHandler
-        filter:
-          module: system
-          method: remark
-          success: true
+
 dataSources:
   - name: main
     kind: substrate/Runtime
     startBlock: 1
-    mapping: *mymapping # can reuse or change
+    mapping:
+      file: ./dist/index.js
+      handlers:
+        - handler: handleCall
+          kind: substrate/CallHandler
+          filter:
+            module: utility
+            method: batchAll
+            success: true
+        - handler: handleCall
+          kind: substrate/CallHandler
+          filter:
+            module: utility
+            method: batch
+            success: true
+        - handler: handleCall
+          kind: substrate/CallHandler
+          filter:
+            module: system
+            method: remark
+            success: true
+        - handler: handleRemark
+          kind: substrate/CallHandler
+          filter:
+            module: utility
+            method: batchAll
+            success: true
+        - handler: handleRemark
+          kind: substrate/CallHandler
+          filter:
+            module: utility
+            method: batch
+            success: true
+        - handler: handleRemark
+          kind: substrate/CallHandler
+          filter:
+            module: system
+            method: remark
+            success: true
+
